@@ -17,74 +17,44 @@ import static org.junit.Assert.assertTrue;
 public class WebTestOrder {
 
     WebDriver driver;
+    OrderForWhom orderForm;
 
     @Before
     public void setUp() {
         driver = new ChromeDriver();
+        orderForm = new OrderForWhom(driver);
+        orderForm.goInServis();
+        orderForm.clickToCookies();
     }
 
     private final String name;
     private final String lastName;
     private final String orderAdress;
     private final String numberPhone;
+    private final By button;
 
 
-    public WebTestOrder(String name, String lastName, String orderAdress, String numberPhone) {
+    public WebTestOrder(String name, String lastName, String orderAdress, String numberPhone, By button) {
         this.name = name;
         this.lastName = lastName;
         this.orderAdress = orderAdress;
         this.numberPhone = numberPhone;
+        this.button = button;
     }
 
 
     @Parameterized.Parameters
     public static Object[][] orderData() {
         return new Object[][]{
-                {"Карим", "Каримыч", "Москва, ул. Арбат", "89000000000"},
+                {"Карим", "Каримыч", "Москва, ул. Арбат", "89000000000",BUTTON_ORDER_IN_HEADER},
+                {"Карим", "Каримыч", "Москва, ул. Арбат", "89000000000",BUTTON_ORDER_IN_BODY},
         };
     }
 
     @Test
-    public void orderCheckInButtonHeader() {
-        OrderForWhom orderForm = new OrderForWhom(driver);
-        orderForm.goInServis();
-        orderForm.clickToCookies();
+    public void orderCheckInButton() {
         WebDriverWait inputField = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(BUTTON_ORDER_IN_HEADER);
-        WebDriverWait inputField_2 = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(INPUT_NAME);
-        WebDriverWait inputField_3 = new WebDriverWait(driver, 5);
-        orderForm.sendTextToLine(INPUT_NAME, name);
-        orderForm.clickToItem(INPUT_LASTNAME);
-        orderForm.sendTextToLine(INPUT_LASTNAME, lastName);
-        orderForm.clickToItem(INPUT_ADRESS);
-        orderForm.sendTextToLine(INPUT_ADRESS, orderAdress);
-        orderForm.clickToItem(INPUT_METRO);
-        WebDriverWait inputField_4 = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(ENTER_METRO);
-        orderForm.clickToItem(INPUT_PHONE);
-        orderForm.sendTextToLine(INPUT_PHONE, numberPhone);
-        orderForm.clickToItem(BUTTON_NEXT);
-        WebDriverWait inputField_5 = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(INPUT_DATE);
-        WebDriverWait inputField_6 = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(SELECT_DATE);
-        orderForm.clickToItem(INPUT_AREND);
-        WebDriverWait inputField_7 = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(PERIOD_AREND);
-        orderForm.clickToItem(BUTTON_ORDER_GO);
-        orderForm.clickToItem(BUTTON_ORDER_YES);
-        WebDriverWait inputField_8 = new WebDriverWait(driver, 5);
-        assertTrue("Заказ оформлен", driver.findElement(RESULT_FINAL).isDisplayed());
-    }
-
-    @Test
-    public void orderCheckInButtonBody() {
-        OrderForWhom orderForm = new OrderForWhom(driver);
-        orderForm.goInServis();
-        orderForm.clickToCookies();
-        WebDriverWait inputField = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(BUTTON_ORDER_IN_BODY);
+        orderForm.clickToItem(button);
         WebDriverWait inputField_2 = new WebDriverWait(driver, 5);
         orderForm.clickToItem(INPUT_NAME);
         WebDriverWait inputField_3 = new WebDriverWait(driver, 5);

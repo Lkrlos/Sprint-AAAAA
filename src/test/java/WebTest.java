@@ -16,10 +16,14 @@ import static org.junit.Assert.assertEquals;
 public class WebTest {
 
     WebDriver driver;
+    MainPage mainpage;
 
     @Before
     public void setUp() {
         driver = new ChromeDriver();
+        mainpage = new MainPage(driver);
+        mainpage.goInServis();
+        mainpage.clickToCookies();
     }
 
     private final By AccordionItem;
@@ -50,9 +54,6 @@ public class WebTest {
 
     @Test
     public void chekListAccordion() {
-        MainPage mainpage = new MainPage(driver);
-        mainpage.goInServis();
-        mainpage.clickToCookies();
         WebDriverWait inputField = new WebDriverWait(driver, 5);
         mainpage.clickToAccordionItem(AccordionItem);
         WebDriverWait inputFieldTwo = new WebDriverWait(driver, 5);
