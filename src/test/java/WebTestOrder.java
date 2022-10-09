@@ -54,7 +54,7 @@ public class WebTestOrder {
     @Test
     public void orderCheckInButton() {
         WebDriverWait inputField = new WebDriverWait(driver, 5);
-        orderForm.clickToItem(BUTTON_ORDER_IN_HEADER);
+        orderForm.clickToItem(button);
         WebDriverWait inputField_2 = new WebDriverWait(driver, 5);
         orderForm.clickToItem(INPUT_NAME);
         WebDriverWait inputField_3 = new WebDriverWait(driver, 5);
