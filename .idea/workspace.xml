@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/WebTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/WebTestOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebTestOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/WebTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/WebTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/WebTestOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/WebTestOrder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
